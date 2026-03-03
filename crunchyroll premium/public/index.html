@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crunchyroll by Tan 👑 Premium</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f47521 0%, #ff9f4a 100%);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+    }
+    .card {
+      max-width: 700px; width: 100%; background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px); border-radius: 48px; padding: 40px 35px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25), 0 0 0 2px rgba(255,215,0,0.6) inset;
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+    .logo-section {
+      display: flex; align-items: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;
+    }
+    .crunchy-logo {
+      display: flex; align-items: center; background: #000; padding: 8px 20px; border-radius: 60px; gap: 10px;
+    }
+    .crunchy-logo span { font-weight: 800; font-size: 1.8rem; color: white; letter-spacing: -0.5px; }
+    .crunchy-logo svg { height: 32px; width: auto; fill: white; }
+    .crown-title {
+      display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.05);
+      padding: 8px 20px; border-radius: 50px; font-size: 1.3rem; font-weight: 700; color: #2d1b0a;
+    }
+    h1 {
+      font-size: 2.3rem; font-weight: 800; color: #1e1e1e; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .badge {
+      background: gold; color: black; padding: 5px 20px; border-radius: 30px; font-size: 1rem;
+      font-weight: 600; display: inline-block; margin-bottom: 20px; box-shadow: 0 4px 0 #b8860b;
+    }
+    .credential-section {
+      background: #f9f3e7; border-radius: 32px; padding: 25px; margin: 30px 0;
+      border: 2px dashed #f47521;
+    }
+    .credential-box {
+      background: white; border-radius: 24px; padding: 20px; box-shadow: 0 5px 0 #ddd; margin-bottom: 15px;
+    }
+    .credential-item {
+      display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid #eee;
+    }
+    .credential-item:last-child { border-bottom: none; }
+    .label { font-weight: 600; color: #666; min-width: 90px; font-size: 1.1rem; }
+    .value {
+      background: #f1f1f1; padding: 10px 20px; border-radius: 50px; font-family: monospace;
+      font-size: 1.2rem; word-break: break-all; flex: 1; border: 1px solid #ccc;
+    }
+    .copy-btn {
+      background: #f47521; border: none; color: white; padding: 8px 20px; border-radius: 40px;
+      font-weight: 600; cursor: pointer; transition: 0.2s; box-shadow: 0 3px 0 #b85e00;
+    }
+    .copy-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 5px 0 #b85e00; }
+    .status {
+      text-align: center; color: #555; font-style: italic; font-size: 0.95rem; margin-top: 10px;
+    }
+    .disclaimer {
+      background: #fff9c4; border-left: 6px solid #ffbb00; padding: 20px; border-radius: 16px;
+      font-size: 0.95rem; color: #333; margin: 20px 0;
+    }
+    .footer {
+      display: flex; justify-content: flex-end; align-items: center; margin-top: 20px; color: #666;
+    }
+    .refresh-indicator { display: flex; align-items: center; gap: 5px; color: #f47521; font-weight: 500; }
+    .fa-crown { color: #ffbb00; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo-section">
+      <div class="crunchy-logo">
+        <span>Crunchyroll</span>
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="5"/></svg>
+      </div>
+      <div class="crown-title"><i class="fas fa-crown"></i> by Tan Premium Edition</div>
+    </div>
+    <h1>Crunchyroll <i class="fas fa-crown" style="color:#ffbb00; font-size:2.5rem;"></i></h1>
+    <div class="badge">👑 FREE PREMIUM ACCOUNT 👑</div>
+
+    <div class="credential-section">
+      <div class="credential-box">
+        <div class="credential-item">
+          <span class="label"><i class="fas fa-envelope"></i> Email</span>
+          <span class="value" id="emailValue">Loading...</span>
+          <button class="copy-btn" onclick="copyToClipboard('email')">Copy</button>
+        </div>
+        <div class="credential-item">
+          <span class="label"><i class="fas fa-lock"></i> Password</span>
+          <span class="value" id="passValue">Loading...</span>
+          <button class="copy-btn" onclick="copyToClipboard('pass')">Copy</button>
+        </div>
+      </div>
+      <div class="status" id="statusMsg">
+        <i class="fas fa-sync-alt fa-spin"></i> Fetching live account...
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>⚠️ Important:</strong> This is a shared account refreshed from the original source. Do not change the password. If it's busy, try again later.
+    </div>
+
+    <div class="footer">
+      <div class="refresh-indicator"><i class="fas fa-bolt"></i> live updates</div>
+    </div>
+  </div>
+
+  <script>
+    const emailSpan = document.getElementById('emailValue');
+    const passSpan = document.getElementById('passValue');
+    const statusDiv = document.getElementById('statusMsg');
+
+    async function fetchLiveAccount() {
+      try {
+        statusDiv.innerHTML = `<i class="fas fa-sync-alt fa-spin"></i> Updating...`;
+        // ⚠️ Replace with your actual Vercel URL after deployment
+        const res = await fetch('https://your-project.vercel.app/api/credentials');
+        const data = await res.json();
+        if (data.email && data.password) {
+          emailSpan.textContent = data.email;
+          passSpan.textContent = data.password;
+          statusDiv.innerHTML = `<i class="fas fa-check-circle" style="color:green"></i> Updated at ${new Date().toLocaleTimeString()}`;
+        } else {
+          throw new Error('Invalid data');
+        }
+      } catch (err) {
+        console.error(err);
+        emailSpan.textContent = 'karnchileoxaam256@gmail.com';
+        passSpan.textContent = 'Oxaam5241798';
+        statusDiv.innerHTML = `<i class="fas fa-exclamation-triangle" style="color:orange"></i> Offline – using fallback.`;
+      }
+    }
+
+    window.copyToClipboard = (type) => {
+      const text = type === 'email' ? emailSpan.textContent : passSpan.textContent;
+      navigator.clipboard.writeText(text).then(() => alert(`Copied ${type}!`));
+    };
+
+    fetchLiveAccount();
+    setInterval(fetchLiveAccount, 30000); // refresh every 30 seconds
+  </script>
+</body>
+</html>
