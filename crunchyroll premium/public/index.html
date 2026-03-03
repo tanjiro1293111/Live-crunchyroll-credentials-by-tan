@@ -121,7 +121,7 @@
       try {
         statusDiv.innerHTML = `<i class="fas fa-sync-alt fa-spin"></i> Updating...`;
         // ⚠️ Replace with your actual Vercel URL after deployment
-        const res = await fetch('https://your-project.vercel.app/api/credentials');
+        const res = await fetch('https://crunchyroll-premium-by-tan.vercel.app/api/credentials');
         const data = await res.json();
         if (data.email && data.password) {
           emailSpan.textContent = data.email;
@@ -147,4 +147,5 @@
     setInterval(fetchLiveAccount, 30000); // refresh every 30 seconds
   </script>
 </body>
+
 </html>
